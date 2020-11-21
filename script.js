@@ -14,8 +14,8 @@ let transactions = localStorage
 const removeTransaction = ID => {
   transactions  = transactions.filter(transaction => 
     transaction.id !== ID)
-  updateLocalStorage()
-  init()
+  atualizarArmazenamento()
+  iniciar()
 }
 
 const addTransactionIntoDOM = ({ amount, name, id }) => {
@@ -33,64 +33,64 @@ const addTransactionIntoDOM = ({ amount, name, id }) => {
   listaDeTransacoes.append(li)
 }
 
-const getExpenses = transactionsAmounts => Math.abs(transactionsAmounts
+const despesas = transactionsAmounts => Math.abs(transactionsAmounts
   .filter(value => value < 0)
   .reduce((accumulator, value) => accumulator + value, 0))
   .toFixed(2)
 
-const getIncome = transactionsAmounts => transactionsAmounts
+const renda = transactionsAmounts => transactionsAmounts
   .filter(value => value > 0)
   .reduce((accumulator, value) => accumulator + value, 0)
   .toFixed(2)
 
-const getTotal = transactionsAmounts => transactionsAmounts
+const saldo = transactionsAmounts => transactionsAmounts
   .reduce((accumulator, transaction) => accumulator + transaction, 0)
   .toFixed(2)
 
 const updateBalanceValues = () => {
   const transactionsAmounts = transactions.map(({amount}) => amount)
-  const total = getTotal(transactionsAmounts)
-  const income = getIncome(transactionsAmounts)
-  const expense = getExpenses(transactionsAmounts)
+  const total = saldo(transactionsAmounts)
+  const income = renda(transactionsAmounts)
+  const expense = despesas(transactionsAmounts)
 
   equilibrioDeExibicao.textContent = `R$ ${total}`
   exibicaoDeRenda.textContent = `R$ ${income}`
   exibicaoDeDespesas.textContent = `R$ ${expense}`
 }
 
-const init = () => {
+const iniciar = () => {
   listaDeTransacoes.innerHTML = ''
   transactions.forEach(addTransactionIntoDOM)
   updateBalanceValues()
 } 
 
-init()
+iniciar()
 
-const updateLocalStorage = () => {
+const atualizarArmazenamento = () => {
   localStorage.setItem('transactions', JSON.stringify(transactions))
 }
 
 const generateID = () => Math.round(Math.random() * 1000)
 
-const addToTransactionsArray = (transactionName, transactionAmount) => {
+const adicionarTransacao = (transacao, valor) => {
   transactions.push({
     id: generateID(), 
-    name: transactionName, 
-    amount: Number(transactionAmount) 
+    name: transacao, 
+    amount: Number(valor) 
   })
 }
 
-const cleanInputs = () => {
+const limparInputs = () => {
   nomeDaTransacao.value = ''
   valorDaTransacao.value = ''
 }
 
-const handleFormSubmit = event => {
+const novaTransacao = event => {
   event.preventDefault()
 
-  const transactionName = nomeDaTransacao.value.trim()
-  const transactionAmount = valorDaTransacao.value.trim()
-  const isSomeInputEmpty = transactionName === '' || transactionAmount === ''
+  const transacao = nomeDaTransacao.value.trim()
+  const valor = valorDaTransacao.value.trim()
+  const isSomeInputEmpty = transacao === '' || valor === ''
 
   if(isSomeInputEmpty) {
     alert('Por favor, preencha tanto o nome quanto o valor da transação')
@@ -98,10 +98,10 @@ const handleFormSubmit = event => {
   }
 
 
-  addToTransactionsArray(transactionName, transactionAmount)
-  init()
-  updateLocalStorage()
-  cleanInputs()
+  adicionarTransacao(transacao, valor)
+  iniciar()
+  atualizarArmazenamento()
+  limparInputs()
 }
 
-form.addEventListener('submit', handleFormSubmit)
+form.addEventListener('submit', novaTransacao)
