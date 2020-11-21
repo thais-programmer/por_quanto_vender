@@ -1,7 +1,7 @@
 const listaDeTransacoes = document.querySelector('#transactions')
 const exibicaoDeRenda = document.querySelector('#money-plus')
-const expenseDisplay = document.querySelector('#money-minus')
-const balanceDisplay = document.querySelector('#balance')
+const exibicaoDeDespesas = document.querySelector('#money-minus')
+const equilibrioDeExibicao = document.querySelector('#balance')
 const form = document.querySelector('#form')
 const inputTransactionName = document.querySelector('#text')
 const inputTransactionAmount = document.querySelector('#amount')
@@ -53,9 +53,9 @@ const updateBalanceValues = () => {
   const income = getIncome(transactionsAmounts)
   const expense = getExpenses(transactionsAmounts)
 
-  balanceDisplay.textContent = `R$ ${total}`
+  equilibrioDeExibicao.textContent = `R$ ${total}`
   exibicaoDeRenda.textContent = `R$ ${income}`
-  expenseDisplay.textContent = `R$ ${expense}`
+  exibicaoDeDespesas.textContent = `R$ ${expense}`
 }
 
 const init = () => {
