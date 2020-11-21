@@ -4,7 +4,7 @@ const exibicaoDeDespesas = document.querySelector('#money-minus')
 const equilibrioDeExibicao = document.querySelector('#balance')
 const form = document.querySelector('#form')
 const nomeDaTransacao = document.querySelector('#text')
-const inputTransactionAmount = document.querySelector('#amount')
+const valorDaTransacao = document.querySelector('#amount')
 
 const localStorageTransactions = JSON.parse(localStorage
   .getItem('transactions'))
@@ -82,14 +82,14 @@ const addToTransactionsArray = (transactionName, transactionAmount) => {
 
 const cleanInputs = () => {
   nomeDaTransacao.value = ''
-  inputTransactionAmount.value = ''
+  valorDaTransacao.value = ''
 }
 
 const handleFormSubmit = event => {
   event.preventDefault()
 
   const transactionName = nomeDaTransacao.value.trim()
-  const transactionAmount = inputTransactionAmount.value.trim()
+  const transactionAmount = valorDaTransacao.value.trim()
   const isSomeInputEmpty = transactionName === '' || transactionAmount === ''
 
   if(isSomeInputEmpty) {
