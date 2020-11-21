@@ -6,10 +6,10 @@ const form = document.querySelector('#form')
 const nomeDaTransacao = document.querySelector('#text')
 const valorDaTransacao = document.querySelector('#amount')
 
-const localStorageTransactions = JSON.parse(localStorage
+const armazenamento = JSON.parse(localStorage
   .getItem('transactions'))
 let transactions = localStorage
-  .getItem('transactions') !== null ? localStorageTransactions : []
+  .getItem('transactions') !== null ? armazenamento : []
 
 const removeTransaction = ID => {
   transactions  = transactions.filter(transaction => 
