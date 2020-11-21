@@ -90,9 +90,9 @@ const novaTransacao = event => {
 
   const transacao = nomeDaTransacao.value.trim()
   const valor = valorDaTransacao.value.trim()
-  const isSomeInputEmpty = transacao === '' || valor === ''
+  const seAhTransacaoForErrada = transacao === '' || valor === ''
 
-  if(isSomeInputEmpty) {
+  if(seAhTransacaoForErrada) {
     alert('Por favor, preencha tanto o nome quanto o valor da transação')
     return
   }
