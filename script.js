@@ -1,5 +1,5 @@
 const listaDeTransacoes = document.querySelector('#transactions')
-const incomeDisplay = document.querySelector('#money-plus')
+const exibicaoDeRenda = document.querySelector('#money-plus')
 const expenseDisplay = document.querySelector('#money-minus')
 const balanceDisplay = document.querySelector('#balance')
 const form = document.querySelector('#form')
@@ -54,7 +54,7 @@ const updateBalanceValues = () => {
   const expense = getExpenses(transactionsAmounts)
 
   balanceDisplay.textContent = `R$ ${total}`
-  incomeDisplay.textContent = `R$ ${income}`
+  exibicaoDeRenda.textContent = `R$ ${income}`
   expenseDisplay.textContent = `R$ ${expense}`
 }
 
