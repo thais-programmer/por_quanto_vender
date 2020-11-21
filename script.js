@@ -1,4 +1,4 @@
-const transactionsUl = document.querySelector('#transactions')
+const listaDeTransacoes = document.querySelector('#transactions')
 const incomeDisplay = document.querySelector('#money-plus')
 const expenseDisplay = document.querySelector('#money-minus')
 const balanceDisplay = document.querySelector('#balance')
@@ -30,7 +30,7 @@ const addTransactionIntoDOM = ({ amount, name, id }) => {
     <span>${operator} R$ ${amountWithoutOperator}</span>
     <button class="delete-btn" onClick="removeTransaction(${id})">x</button>
   `
-  transactionsUl.append(li)
+  listaDeTransacoes.append(li)
 }
 
 const getExpenses = transactionsAmounts => Math.abs(transactionsAmounts
@@ -59,7 +59,7 @@ const updateBalanceValues = () => {
 }
 
 const init = () => {
-  transactionsUl.innerHTML = ''
+  listaDeTransacoes.innerHTML = ''
   transactions.forEach(addTransactionIntoDOM)
   updateBalanceValues()
 } 
