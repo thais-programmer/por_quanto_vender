@@ -6,19 +6,16 @@ const form = document.querySelector('#form')
 const nomeDaTransacao = document.querySelector('#text')
 const valorDaTransacao = document.querySelector('#amount')
 
-const armazenamento = JSON.parse(localStorage
-  .getItem('transactions'))
-let transactions = localStorage
-  .getItem('transactions') !== null ? armazenamento : []
+const armazenamento = JSON.parse(localStorage.getItem('transactions'))
+let transactions = localStorage.getItem('transactions') !== null ? armazenamento : []
 
-const removeTransaction = ID => {
-  transactions  = transactions.filter(transaction => 
-    transaction.id !== ID)
+const removerTransacao = id => {
+  transactions  = transactions.filter(transacao => transacao.id !== id)
   atualizarArmazenamento()
   iniciar()
 }
 
-const addTransactionIntoDOM = ({ amount, name, id }) => {
+const adicionarTransacaoNaTela = ({ amount, name, id }) => {
   const operator = amount < 0 ? '-' : '+'
   const cssClass = amount < 0 ? 'minus' : 'plus'
   const amountWithoutOperator = Math.abs(amount)
@@ -28,7 +25,7 @@ const addTransactionIntoDOM = ({ amount, name, id }) => {
   li.innerHTML = `
     ${name} 
     <span>${operator} R$ ${amountWithoutOperator}</span>
-    <button class="delete-btn" onClick="removeTransaction(${id})">x</button>
+    <button class="delete-btn" onClick="removerTransacao(${id})">x</button>
   `
   listaDeTransacoes.append(li)
 }
@@ -60,7 +57,7 @@ const updateBalanceValues = () => {
 
 const iniciar = () => {
   listaDeTransacoes.innerHTML = ''
-  transactions.forEach(addTransactionIntoDOM)
+  transactions.forEach(adicionarTransacaoNaTela)
   updateBalanceValues()
 } 
 
