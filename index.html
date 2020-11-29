@@ -4,40 +4,43 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./style.css" />
-    <title>Controle de despesas</title>
+    <title>PRECIFIQUE</title>
   </head>
   <body>
-    <h2>Controle de despesas</h2>
+    <!-- titulo do aplicativo -->
+    <h2>PRECIFIQUE</h2>
 
     <div class="container">
-      <h4>Saldo atual</h4>
-      
+      <h4>Lucro</h4>
+
+      <!-- lucro que terei com a venda do projeto -->
       <h1 id="balance" class="balance">R$ 0.00</h1>
 
       <div class="inc-exp-container">
         <div>
-          <h4>Receitas</h4>
+          <!-- preco de venda -->
+          <h4>Preço</h4>
           <p id="money-plus" class="money plus">+ R$0.00</p>
         </div>
 
         <div>
-          <h4>Despesas</h4>
+          <!-- custo do produto -->
+          <h4>Custo</h4>
           <p id="money-minus" class="money minus">- R$0.00</p>
         </div>
       </div>
 
-      <h3>Transações</h3>
-      
-      <ul id="transactions" class="transactions"></ul>
-
       <h3>Adicionar transação</h3>
       
+      <!-- formulario para incluir os custos e preco dos produtos -->
       <form id="form">
+        <!-- nome para eu saber se é custo ou preco de venda -->
         <div class="form-control">
           <label for="text">Nome</label>
           <input autofocus type="text" id="text" placeholder="Nome da transação" />
         </div>
 
+        <!-- valor do custo o do valor de venda -->
         <div class="form-control">
           <label for="amount">Valor <br />
             <small>(negativo - despesas, positivo - receitas)</small>
@@ -45,8 +48,13 @@
           <input type="number" id="amount" placeholder="Valor da transação" />
         </div>
 
+        <!-- botao para adicionar a transacao -->
         <button class="btn">Adicionar</button>
       </form>
+
+      <h3>Transações</h3>
+      <!-- custos e valor de venda do produto -->
+      <ul id="transactions" class="transactions"></ul>
     </div>
 
     <script src="script.js"></script>
